@@ -13,6 +13,11 @@ public class MainController {
     private static final Locale LOCALE = Locale.forLanguageTag("cs-CZ");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("d. MMMM yyyy", LOCALE);
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("H:mm", LOCALE);
+    @GetMapping("/")
+    public ModelAndView makeHomePage(){
+        ModelAndView result = new ModelAndView("index");
+        return result;
+    }
     @GetMapping("/date")
     public ModelAndView makeDate() {
         ModelAndView result = new ModelAndView("date");
@@ -22,6 +27,7 @@ public class MainController {
     }
 
     @GetMapping("/time")
+
     public ModelAndView makeTime() {
         ModelAndView result = new ModelAndView("time");
         String formattedTime = LocalTime.now().format(TIME_FORMATTER);
